@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2wkokx0j23b2"]
+
+[ext_resource type="PackedScene" uid="uid://draiu05nwh4bj" path="res://art/Bot/Bot_Small.glb" id="1_rdepn"]
+[ext_resource type="Material" path="res://art/Bot/Metal.material" id="2_f736u"]
+[ext_resource type="Material" uid="uid://bntvdrkyu7c5k" path="res://art/Bot/Eye.material" id="3_5libn"]
+
+[node name="Bot_Small" instance=ExtResource("1_rdepn")]
+
+[node name="Body" parent="Rig/Body2" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Eye" parent="Rig/Body2/Body" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+surface_material_override/1 = ExtResource("3_5libn")
+
+[node name="Socket_FR2" parent="Rig" index="1"]
+transform = Transform3D(-0.646207, 0.754366, 0.115532, -1.31138e-07, -0.151386, 0.988475, 0.763162, 0.638759, 0.0978265, 0, 0, 0)
+
+[node name="LegFR" parent="Rig/Socket_FR2" index="0"]
+transform = Transform3D(1, -2.72472e-07, -2.46035e-07, -3.70261e-08, 0.591911, -0.806003, 3.65244e-07, 0.806003, 0.591911, -2.54136e-08, 0.359783, -2.02955e-08)
+
+[node name="Foot_FR" parent="Rig/Socket_FR2/LegFR/Foot_FR2" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Leg_FR" parent="Rig/Socket_FR2/LegFR" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_FR" parent="Rig/Socket_FR2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_FL2" parent="Rig" index="2"]
+transform = Transform3D(0.995742, 0.0911189, 0.0139549, 1.31139e-07, -0.151386, 0.988475, 0.0921813, -0.984266, -0.150742, -6.18364e-10, -1.33284e-08, -1.10596)
+
+[node name="Leg_FL2" parent="Rig/Socket_FL2" index="0"]
+transform = Transform3D(1, 3.38925e-08, 2.26224e-08, -1.82762e-09, 0.591911, -0.806003, -4.07079e-08, 0.806003, 0.591911, 2.53385e-08, 0.359783, -9.60831e-08)
+
+[node name="Foot_FL" parent="Rig/Socket_FL2/Leg_FL2/Foot_FL2" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Leg_FL" parent="Rig/Socket_FL2/Leg_FL2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_FL" parent="Rig/Socket_FL2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_BL2" parent="Rig" index="3"]
+transform = Transform3D(0.997118, -0.0749971, -0.0114859, 1.32345e-08, -0.151386, 0.988475, -0.0758715, -0.985625, -0.150949, -0.682371, -2.23517e-08, -1.10596)
+
+[node name="Leg_BL2" parent="Rig/Socket_BL2" index="0"]
+transform = Transform3D(1, -3.21483e-07, -2.49357e-07, -1.06936e-08, 0.591911, -0.806003, 4.06714e-07, 0.806003, 0.591911, 5.78616e-08, 0.359783, 1.88441e-07)
+
+[node name="Foot_BL" parent="Rig/Socket_BL2/Leg_BL2/Foot_BL2" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Leg_BL" parent="Rig/Socket_BL2/Leg_BL2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_BL" parent="Rig/Socket_BL2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_BR2" parent="Rig" index="4"]
+transform = Transform3D(-0.856392, -0.510375, -0.0781642, 5.89517e-08, -0.151386, 0.988475, -0.516325, 0.846522, 0.129645, -0.682371, -7.45058e-09, 0)
+
+[node name="Leg_BR2" parent="Rig/Socket_BR2" index="0"]
+transform = Transform3D(1, 3.2816e-07, 3.22505e-07, 6.56989e-08, 0.591911, -0.806003, -4.55392e-07, 0.806003, 0.591911, 6.74935e-08, 0.359783, -5.92174e-08)
+
+[node name="Foot_BR" parent="Rig/Socket_BR2/Leg_BR2/Foot_BR2" index="0"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Leg_BR" parent="Rig/Socket_BR2/Leg_BR2" index="1"]
+surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="Socket_BR" parent="Rig/Socket_BR2" index="1"]
+transform = Transform3D(1.04966, -0.568536, 0.241393, -0.589009, -1.06464, 0.053729, 0.185935, -0.163051, -1.19253, -0.879242, -0.182803, -0.105569)
+surface_material_override/0 = ExtResource("2_f736u")
