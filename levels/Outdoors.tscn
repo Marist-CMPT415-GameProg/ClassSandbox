@@ -79,3 +79,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87604, 0, -5.08806)
 
 [editable path="Actors/Player"]
 [editable path="Actors/Player/CharacterStats"]
+[editable path="fox"]

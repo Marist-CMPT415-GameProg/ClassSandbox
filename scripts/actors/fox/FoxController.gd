@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var new_state:FoxState = current_state.update(delta, self, $FoxModel)
+	var new_state:FoxState = current_state.update(delta, self)
 	
 	if new_state != null:
 		current_state = new_state

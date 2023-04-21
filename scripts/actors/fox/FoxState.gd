@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 func _init():
 	pass
 
-func update(delta:float, body:CharacterBody3D, model:Node3D):
+func update(delta:float, body:CharacterBody3D):
 	pass
 
 func debug():

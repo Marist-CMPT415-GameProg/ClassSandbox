@@ -11,7 +11,7 @@ func _init():
 	currentTime = timeUntilIdle
 	currentDirectionTime = 0
 
-func update(delta:float, body:CharacterBody3D, model:Node3D):
+func update(delta:float, body:CharacterBody3D):
 	currentTime -= delta
 	currentDirectionTime -= delta
 	
@@ -19,7 +19,7 @@ func update(delta:float, body:CharacterBody3D, model:Node3D):
 		currentDirectionTime = rng.randf_range(3, 6)
 		currentDirection.x = rng.randf_range(-5, 5)
 		currentDirection.z = rng.randf_range(-5, 5)
-		#model.look_at(currentDirection)
+		body.look_at(currentDirection + body.position, Vector3.UP)
 	
 	body.velocity = currentDirection.normalized() * walk_speed
 	body.move_and_slide()
