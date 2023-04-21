@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://up4ums666b71"]
+
+[ext_resource type="PackedScene" uid="uid://br6owaarmge5p" path="res://art/Lich/scene.gltf" id="1_hhvac"]
+[ext_resource type="Script" path="res://scripts/actors/lich.gd" id="1_ojuxk"]
+
+[node name="Lich" type="Node3D"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+script = ExtResource("1_ojuxk")
+
+[node name="scene" parent="." instance=ExtResource("1_hhvac")]
