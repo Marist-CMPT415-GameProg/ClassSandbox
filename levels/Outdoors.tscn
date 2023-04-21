@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=9 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/Lich.tscn" id="5_ly3dh"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(100, 1, 100)
@@ -63,6 +64,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34321)
+
+[node name="Lich" parent="Actors" instance=ExtResource("5_ly3dh")]
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 0, 0, -3.49854)
+walkSpeed = 1
+runSpeed = 3
 
 [node name="UI" type="Node" parent="."]
 

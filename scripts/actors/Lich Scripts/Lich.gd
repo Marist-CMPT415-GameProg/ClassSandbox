@@ -20,30 +20,36 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if stateNum == 0:
-		idle()
+		idle(delta)
 	elif stateNum == 1:
-		patrol()
+		patrol(delta)
 	elif stateNum == 2:
-		chase()
+		chase(delta)
 	elif stateNum == 3:
 		attack()
 		
 	pass
 
 
-func idle():
+func idle(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Idle")
 	if idlePos != position:
 		idlePos = position
-	stateNum = 1
+	if idleTime <= 0:
+		stateNum = 1
+		idleTime = 2
+	idleTime -= delta
 	pass
 	
-func patrol():
+func patrol(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Walk")
-	translate(Vector3.FORWARD)
+	if idlePos.z + patDistance <= position.z:
+		stateNum = 0
+	velocity.z -= walkSpeed * delta
+	move_and_slide()
 	pass
 
-func chase():
+func chase(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Run")
 	pass
 	

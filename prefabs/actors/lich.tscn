@@ -29,4 +29,3 @@ shape = SubResource("CylinderShape3D_32oog")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(66.6667, 0, 0, 0, 66.6667, 0, 0, 0, 66.6667, 0, 171.455, 401.195)
-current = true
