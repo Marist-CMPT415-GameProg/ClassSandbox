@@ -13,8 +13,6 @@ level = 100
 
 [node name="Stamina" type="Node" parent="."]
 script = ExtResource("2")
-fill_rate = 5
-drain_rate = 20
 max_level = 100
 min_level = 0
 level = 100
