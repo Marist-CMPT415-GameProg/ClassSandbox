@@ -1,16 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=10 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/StatHUD.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b435o78wqpul4" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="2"]
 albedo_color = Color(0.45098, 0.364706, 0.25098, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wahxl"]
 
 [node name="Outdoors" type="Node3D"]
 
@@ -67,10 +70,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 [node name="UI" type="Node" parent="."]
 
 [node name="StatHUD" parent="UI" instance=ExtResource("5")]
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Node3D" parent="." instance=ExtResource("6_88cwq")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 3.72035, 0.464621, -0.440147)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wahxl")
 
 [connection signal="changed" from="Actors/Player/CharacterStats/Health" to="UI/StatHUD" method="on_stat_changed" binds= ["HealthBar"]]
 [connection signal="changed" from="Actors/Player/CharacterStats/Stamina" to="UI/StatHUD" method="on_stat_changed" binds= ["StaminaBar"]]
