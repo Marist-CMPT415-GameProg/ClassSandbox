@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b41mvsiwcpf3i"]
+
+[ext_resource type="PackedScene" uid="uid://cn0c1l1kodksc" path="res://art/fox_model/azeria/scene.gltf" id="1_50nmm"]
+[ext_resource type="Script" path="res://scripts/actors/fox/FoxController.gd" id="1_gfoml"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l8o14"]
+height = 0.8
+
+[node name="fox" type="CharacterBody3D"]
+
+[node name="FoxShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CylinderShape3D_l8o14")
+script = ExtResource("1_gfoml")
+
+[node name="FoxModel" parent="." instance=ExtResource("1_50nmm")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0959531, 0.0845704, 0)
