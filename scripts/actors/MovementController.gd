@@ -17,22 +17,22 @@ extends Node
 
 
 ## Notifies listeners of a change to the direction of motion
-signal moved(motion)
+signal moved(Vector3)
 ## Notifies listeners of a change in orientation
-signal turned(angle)
+signal turned(float)
 ## Notifies listeners when switching between walk and run
-signal sprinted(sprint)
+signal sprinted(bool)
 ## Notifies a character upon entering or exiting a crouch
-signal crouched(crouch)
+signal crouched(bool)
 ## Notifies a character when a jump action is initiated
 signal jumped()
 
 ## Notifies listeners of a change to the camera orientation
-export var controlled_body:NodePath
+@export var controlled_body:NodePath
 ## Notifies listeners of a change to the camera orientation
-export var is_sprint_toggle:bool = false
+@export var is_sprint_toggle:bool = false
 ## Notifies listeners of a change to the camera orientation
-export var is_crouch_toggle:bool = false
+@export var is_crouch_toggle:bool = false
 
 ## Indicates whether the camera provides a 1st-person or 3rd-person view
 var is_camera_first_person:bool = false
@@ -49,11 +49,11 @@ var is_crouch_on:bool = false
 # TODO Reduce coupling in the code by setting connecting signals in the editor's Node tab instead
 func _ready():
 	var receiver = get_node(controlled_body)
-	connect("moved", receiver, "on_move")
-	connect("turned", receiver, "on_turn")
-	connect("sprinted", receiver, "on_sprint")
-	connect("crouched", receiver, "on_crouch")
-	connect("jumped", receiver, "on_jump")
+	connect("moved", receiver.on_move)
+	connect("turned", receiver.on_turn)
+	connect("sprinted", receiver.on_sprint)
+	connect("crouched", receiver.on_crouch)
+	connect("jumped", receiver.on_jump)
 
 
 func _input(event):

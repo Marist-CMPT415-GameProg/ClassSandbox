@@ -6,9 +6,9 @@ extends IntResource
 ## Uses an integer representation and discrete increment/decrement.
 
 ## Amount to refill per second.
-export var fill_rate:int = 1
+@export var fill_rate:int = 1
 ## Amount to drain per second when exerting.
-export var drain_rate:int = 1
+@export var drain_rate:int = 1
 
 ## Numbers of seconds to replenish one unit (computed from fill/drain rates)
 var secs_per_unit:float

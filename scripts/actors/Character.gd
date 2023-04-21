@@ -1,5 +1,5 @@
 class_name Character
-extends KinematicBody
+extends CharacterBody3D
 
 ## Provides various common mechanics for a 3D character based on kinematic control.
 ##
@@ -12,24 +12,22 @@ extends KinematicBody
 
 
 ## Base speed (in m/sec) for normal movement such as walking
-export var walk_speed:float    = 2.0
+@export var walk_speed:float    = 2.0
 ## Speed when sprinting (in m/sec)
-export var run_speed:float     = 5.0
+@export var run_speed:float     = 5.0
 ## Turning speed (in deg/sec)
-export var turn_speed:float    = 5.0
+@export var turn_speed:float    = 5.0
 ## Speed when crouching (in m/sec)
-export var crouch_speed:float  = 1.0
+@export var crouch_speed:float  = 1.0
 ## Relative height of the character avatar while crouching
-export var crouch_height:float = 0.5
+@export var crouch_height:float = 0.5
 ## Relative height the character can jump to
-export var jump_height:float   = 1.5
+@export var jump_height:float   = 1.5
 ## How fast the character changes movement speeds
-export var acceleration:float  = 10
+@export var acceleration:float  = 10
 
 ## Vertical acceleration due to gravity
 var gravity:float = ProjectSettings.get_setting("physics/3d/default_gravity")
-## Kinematic velocity of the character body
-var velocity:Vector3 = Vector3.ZERO  # NOTE: In Godot 4 CharacterBody this field is built-in
 
 ## The orientation the character is approaching
 var target_angle:float = 0
@@ -42,7 +40,7 @@ var target_speed:float = walk_speed
 func _physics_process(delta):
 	turn(delta)
 	accelerate(delta)
-	velocity = move_and_slide(velocity, Vector3.UP)
+	move_and_slide()
 
 
 ## Smoothly interpolate toward the target velocity and apply gravity.

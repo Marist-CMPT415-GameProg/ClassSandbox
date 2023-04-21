@@ -11,18 +11,18 @@ extends Node
 
 
 ## Notifies listeners of the new level when this resource changes
-signal changed(level)
+signal changed(float)
 ## Notifies listeners when this resource reaches its minimum level
 signal emptied
 ## Notifies listeners when this resource reaches its maximum level
 signal filled
 
 ## Upper limit for this stat/resource.
-export var max_level:float = 100
+@export var max_level:float = 100
 ## Lower limit for this stat/resource.
-export var min_level:float = 0
+@export var min_level:float = 0
 ## Current/starting value for this stat/resource.
-export var level:float = 100
+@export var level:float = 100
 
 
 func _init():

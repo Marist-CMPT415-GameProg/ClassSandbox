@@ -11,18 +11,18 @@ extends Node
 
 
 ## Notifies listeners of the new level when this resource changes
-signal changed(level)
+signal changed(int)
 ## Notifies listeners when this resource reaches its minimum level
 signal emptied
 ## Notifies listeners when this resource reaches its maximum level
 signal filled
 
 ## Upper limit for this stat/resource.
-export var max_level:int = 10
+@export var max_level:int = 10
 ## Lower limit for this stat/resource.
-export var min_level:int = -10
+@export var min_level:int = -10
 ## Current/starting value for this stat/resource.
-export var level:int = 0
+@export var level:int = 0
 
 
 func _init():

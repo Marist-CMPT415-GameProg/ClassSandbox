@@ -10,13 +10,13 @@ extends Control
 
 
 ## Color of the health bar
-export var health_color:Color = Color.red
+@export var health_color:Color = Color.RED
 ## Color of the stamina bar
-export var stamina_color:Color = Color.green
+@export var stamina_color:Color = Color.GREEN
 ## Height of the bars
-export var bar_height:float = 20
+@export var bar_height:float = 20
 ## Width of the bars when full
-export var bar_width:float = 180
+@export var bar_width:float = 180
 
 
 func _ready():

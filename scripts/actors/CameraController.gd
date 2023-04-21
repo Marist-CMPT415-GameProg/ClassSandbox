@@ -1,5 +1,5 @@
 class_name CameraController
-extends Spatial
+extends Node3D
 
 ## Provides input-based control over the player camera view.
 ##
@@ -14,39 +14,36 @@ extends Spatial
 
 
 ## Notifies listeners of a change to the camera orientation
-signal looked(delta, is_first_person)
+signal looked(Vector2, bool)
 ## Notifies listeners of a viewpoint switch (first- vs third-person)
-signal changed(is_first_person)
+signal changed(bool)
 
 ## Reference to a movement controller for the player character 
-export var controller:NodePath
+@export var controller:MovementController
 ## Reference to a transform a movement controller for the player character 
-export var follow_target:NodePath
+@export var follow_target:Node3D
 ## Controls how fast the camera moves relative to the input
-export var lookaround_speed = 0.01
+@export var lookaround_speed = 0.01
 ## Maximum pitch angle
-export var top_clamp = 90
+@export var top_clamp = 90
 ## Minimum pitch angle
-export var bottom_clamp = 0
+@export var bottom_clamp = 0
 # Third person camera position
-export var third_person_position:Vector3 = Vector3(0, 0, 5)
+@export var third_person_position:Vector3 = Vector3(0, 0, 5)
 
 ## Current yaw and pitch angles for this camera
 var camera_rotation:Vector2
-## Global transformation of the follow target for this camera
-var follow_transform:Transform
 
 
 func _init():
-	top_clamp = deg2rad(top_clamp)
-	bottom_clamp = deg2rad(bottom_clamp)
+	top_clamp = deg_to_rad(top_clamp)
+	bottom_clamp = deg_to_rad(bottom_clamp)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _ready():
-	follow_transform = get_node(follow_target).global_transform
-	connect("changed", get_node(controller), "on_view_changed")
-	connect("looked", get_node(controller), "on_look")
+	connect("changed", controller.on_view_changed)
+	connect("looked", controller.on_look)
 	emit_signal("looked", 0)
 	emit_signal("changed", is_first_person())
 
@@ -59,19 +56,19 @@ func _input(event):
 		look(camera_rotation)
 
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == BUTTON_WHEEL_UP:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom(true)
-		elif event.button_index == BUTTON_WHEEL_DOWN:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			zoom(false)
 
 
 func _process(_delta):
-	global_translation = get_node(follow_target).global_translation
+	global_position = follow_target.global_position
 
 
 ## Indicates whether the camera view is in first-person mode
 func is_first_person():
-	return get_viewport().get_camera().translation.is_equal_approx(Vector3.ZERO)
+	return get_viewport().get_camera_3d().position.is_equal_approx(Vector3.ZERO)
 
 
 ## Orient the camera based on the given yaw and pitch angles
