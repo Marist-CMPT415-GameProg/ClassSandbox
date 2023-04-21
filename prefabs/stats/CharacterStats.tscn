@@ -7,6 +7,9 @@
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("1")
+max_level = 100
+min_level = 0
+level = 100
 
 [node name="Stamina" type="Node" parent="."]
 script = ExtResource("2")
