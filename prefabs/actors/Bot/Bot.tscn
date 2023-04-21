@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2wkokx0j23b2"]
+[gd_scene load_steps=5 format=3 uid="uid://d2wkokx0j23b2"]
 
 [ext_resource type="PackedScene" uid="uid://draiu05nwh4bj" path="res://art/Bot/Bot_Small.glb" id="1_rdepn"]
+[ext_resource type="Script" path="res://scripts/actors/Bot/BotController.gd" id="2_58v67"]
 [ext_resource type="Material" path="res://art/Bot/Metal.material" id="2_f736u"]
 [ext_resource type="Material" uid="uid://bntvdrkyu7c5k" path="res://art/Bot/Eye.material" id="3_5libn"]
 
 [node name="Bot" instance=ExtResource("1_rdepn")]
+script = ExtResource("2_58v67")
 
 [node name="Body" parent="Rig/Body2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
@@ -13,11 +15,16 @@ surface_material_override/0 = ExtResource("2_f736u")
 surface_material_override/0 = ExtResource("2_f736u")
 surface_material_override/1 = ExtResource("3_5libn")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Rig/Body2/Body/Eye" index="0"]
+transform = Transform3D(1, -1.28303e-13, -1.03917e-13, 8.10468e-16, 1, -8.94069e-08, 8.88178e-16, -3.55271e-15, 1, 2.98023e-08, 0.243782, -7.26528e-09)
+light_color = Color(1, 0, 0.0156863, 1)
+light_energy = 3.0
+
 [node name="Socket_FR2" parent="Rig" index="1"]
-transform = Transform3D(-0.646207, 0.754366, 0.115532, -1.31138e-07, -0.151386, 0.988475, 0.763162, 0.638759, 0.0978265, 0, 0, 0)
+transform = Transform3D(-0.771417, 0.628996, 0.0963313, -2.03325e-07, -0.151386, 0.988475, 0.63633, 0.762526, 0.116782, 0, 0, 0)
 
 [node name="LegFR" parent="Rig/Socket_FR2" index="0"]
-transform = Transform3D(1, -2.72472e-07, -2.46035e-07, -3.70261e-08, 0.591911, -0.806003, 3.65244e-07, 0.806003, 0.591911, -2.54136e-08, 0.359783, -2.02955e-08)
+transform = Transform3D(1, -2.72236e-07, -2.32554e-07, -2.63001e-08, 0.591911, -0.806003, 3.57075e-07, 0.806003, 0.591911, -2.54136e-08, 0.359783, -2.02955e-08)
 
 [node name="Foot_FR" parent="Rig/Socket_FR2/LegFR/Foot_FR2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
@@ -29,10 +36,10 @@ surface_material_override/0 = ExtResource("2_f736u")
 surface_material_override/0 = ExtResource("2_f736u")
 
 [node name="Socket_FL2" parent="Rig" index="2"]
-transform = Transform3D(0.995742, 0.0911189, 0.0139549, 1.31139e-07, -0.151386, 0.988475, 0.0921813, -0.984266, -0.150742, -6.18364e-10, -1.33284e-08, -1.10596)
+transform = Transform3D(0.957312, 0.285723, 0.0437589, 1.31139e-07, -0.151386, 0.988475, 0.289055, -0.946279, -0.144924, -6.18364e-10, -1.33284e-08, -1.10596)
 
 [node name="Leg_FL2" parent="Rig/Socket_FL2" index="0"]
-transform = Transform3D(1, 3.38925e-08, 2.26224e-08, -1.82762e-09, 0.591911, -0.806003, -4.07079e-08, 0.806003, 0.591911, 2.53385e-08, 0.359783, -9.60831e-08)
+transform = Transform3D(1, 3.80657e-08, -9.64473e-09, -2.15454e-08, 0.326521, -0.94519, -3.28301e-08, 0.94519, 0.326521, 2.53385e-08, 0.359783, -9.60831e-08)
 
 [node name="Foot_FL" parent="Rig/Socket_FL2/Leg_FL2/Foot_FL2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
@@ -44,10 +51,10 @@ surface_material_override/0 = ExtResource("2_f736u")
 surface_material_override/0 = ExtResource("2_f736u")
 
 [node name="Socket_BL2" parent="Rig" index="3"]
-transform = Transform3D(0.997118, -0.0749971, -0.0114859, 1.32345e-08, -0.151386, 0.988475, -0.0758715, -0.985625, -0.150949, -0.682371, -2.23517e-08, -1.10596)
+transform = Transform3D(0.961203, -0.272664, -0.0417589, -1.32346e-08, -0.151386, 0.988475, -0.275843, -0.950124, -0.145513, -0.682371, -2.23517e-08, -1.10596)
 
 [node name="Leg_BL2" parent="Rig/Socket_BL2" index="0"]
-transform = Transform3D(1, -3.21483e-07, -2.49357e-07, -1.06936e-08, 0.591911, -0.806003, 4.06714e-07, 0.806003, 0.591911, 5.78616e-08, 0.359783, 1.88441e-07)
+transform = Transform3D(1, -3.32789e-07, -2.37643e-07, 5.4407e-09, 0.591911, -0.806003, 4.08893e-07, 0.806003, 0.591911, 5.78616e-08, 0.359783, 1.88441e-07)
 
 [node name="Foot_BL" parent="Rig/Socket_BL2/Leg_BL2/Foot_BL2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
@@ -59,10 +66,10 @@ surface_material_override/0 = ExtResource("2_f736u")
 surface_material_override/0 = ExtResource("2_f736u")
 
 [node name="Socket_BR2" parent="Rig" index="4"]
-transform = Transform3D(-0.856392, -0.510375, -0.0781642, 5.89517e-08, -0.151386, 0.988475, -0.516325, 0.846522, 0.129645, -0.682371, -7.45058e-09, 0)
+transform = Transform3D(-0.906266, -0.417835, -0.0639915, 9.50446e-08, -0.151385, 0.988475, -0.422707, 0.895821, 0.137195, -0.682371, -7.45058e-09, 0)
 
 [node name="Leg_BR2" parent="Rig/Socket_BR2" index="0"]
-transform = Transform3D(1, 3.2816e-07, 3.22505e-07, 6.56989e-08, 0.591911, -0.806003, -4.55392e-07, 0.806003, 0.591911, 6.74935e-08, 0.359783, -5.92174e-08)
+transform = Transform3D(1, 3.98481e-07, 2.14279e-07, 2.81306e-08, 0.417931, -0.908478, -4.51565e-07, 0.908478, 0.417931, 6.74935e-08, 0.359783, -5.92174e-08)
 
 [node name="Foot_BR" parent="Rig/Socket_BR2/Leg_BR2/Foot_BR2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
