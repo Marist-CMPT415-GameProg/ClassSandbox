@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwuy7i2jy2l5s" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -20,6 +20,8 @@ albedo_color = Color(0.45098, 0.364706, 0.25098, 1)
 transform = Transform3D(0.866025, -0.353553, 0.353554, 0, 0.707107, 0.707106, -0.5, -0.612372, 0.612373, 0, 9, 8)
 
 [node name="Ground" type="StaticBody3D" parent="Environment" groups=["ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+metadata/_edit_group_ = true
 
 [node name="GroundCollider" type="CollisionShape3D" parent="Environment/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
