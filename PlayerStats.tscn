@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Stamina.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Health.gd" type="Script" id=2]
+
+[node name="PlayerStats" type="Node"]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource( 1 )
+level = 50
