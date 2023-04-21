@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://up4ums666b71"]
+[gd_scene load_steps=4 format=3 uid="uid://bg6fabug5tu7b"]
 
-[ext_resource type="PackedScene" uid="uid://br6owaarmge5p" path="res://art/Lich/scene.gltf" id="1_hhvac"]
-[ext_resource type="Script" path="res://scripts/actors/lich.gd" id="1_ojuxk"]
+[ext_resource type="Script" path="res://scripts/actors/Lich Scripts/Lich.gd" id="1_xvfi3"]
+[ext_resource type="PackedScene" uid="uid://br6owaarmge5p" path="res://art/Lich/scene.gltf" id="2_f7xmp"]
 
-[node name="Lich" type="Node3D"]
-transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
-script = ExtResource("1_ojuxk")
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_32oog"]
+height = 232.033
+radius = 74.3369
 
-[node name="scene" parent="." instance=ExtResource("1_hhvac")]
+[node name="Lich" type="CharacterBody3D"]
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 0, 0, 0)
+script = ExtResource("1_xvfi3")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.63425e-13, 0, 1, 0, -1.63425e-13, 0, 1, 0, 117.72, 0)
+shape = SubResource("CylinderShape3D_32oog")
+
+[node name="Lich Model" parent="." instance=ExtResource("2_f7xmp")]
+
+[node name="State Machine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="State Machine"]
+
+[node name="Patrol" type="Node" parent="State Machine"]
+
+[node name="Chase" type="Node" parent="State Machine"]
+
+[node name="Attack" type="Node" parent="State Machine"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(66.6667, 0, 0, 0, 66.6667, 0, 0, 0, 66.6667, 0, 171.455, 401.195)
+current = true
