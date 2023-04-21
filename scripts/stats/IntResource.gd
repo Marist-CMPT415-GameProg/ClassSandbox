@@ -27,6 +27,9 @@ signal filled
 
 func _init():
 	level = clamp(level, min_level, max_level)
+
+
+func _ready():
 	changed.emit(level)
 
 

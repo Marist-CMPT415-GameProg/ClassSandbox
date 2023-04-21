@@ -33,4 +33,5 @@ func on_health_changed(level:int):
 	$HealthBar.set_size(Vector2(level * bar_width / 100, bar_height))
 
 func on_stamina_changed(level:int):
+	print("new stamina ", level)
 	$StaminaBar.set_size(Vector2(level * bar_width / 100, bar_height))
