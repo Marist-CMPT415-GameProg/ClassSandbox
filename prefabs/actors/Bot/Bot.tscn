@@ -4,7 +4,7 @@
 [ext_resource type="Material" path="res://art/Bot/Metal.material" id="2_f736u"]
 [ext_resource type="Material" uid="uid://bntvdrkyu7c5k" path="res://art/Bot/Eye.material" id="3_5libn"]
 
-[node name="Bot_Small" instance=ExtResource("1_rdepn")]
+[node name="Bot" instance=ExtResource("1_rdepn")]
 
 [node name="Body" parent="Rig/Body2" index="0"]
 surface_material_override/0 = ExtResource("2_f736u")
@@ -73,3 +73,5 @@ surface_material_override/0 = ExtResource("2_f736u")
 [node name="Socket_BR" parent="Rig/Socket_BR2" index="1"]
 transform = Transform3D(1.04966, -0.568536, 0.241393, -0.589009, -1.06464, 0.053729, 0.185935, -0.163051, -1.19253, -0.879242, -0.182803, -0.105569)
 surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
