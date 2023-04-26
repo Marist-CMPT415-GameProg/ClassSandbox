@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/Lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(100, 1, 100)
