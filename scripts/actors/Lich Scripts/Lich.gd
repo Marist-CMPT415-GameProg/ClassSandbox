@@ -45,7 +45,7 @@ func patrol(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Walk")
 	if idlePos.z + patDistance <= position.z:
 		stateNum = 0
-	velocity.z -= walkSpeed * delta
+	velocity.z = -walkSpeed
 	move_and_slide()
 	pass
 
