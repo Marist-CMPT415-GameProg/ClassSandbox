@@ -76,7 +76,7 @@ bones/65/rotation = Quaternion(0.958894, 0.283766, -3.86221e-07, -2.45718e-08)
 bones/67/rotation = Quaternion(0.99981, -0.019491, -4.3531e-07, 1.24697e-07)
 
 [node name="Sword_Material_0" parent="Lich Model/Sketchfab_model/712a9e8fe1184e03bc095bef8d28b3cafbx/Object_2/RootNode/Armature/Object_6/Skeleton3D" index="0"]
-transform = Transform3D(0.820961, -0.128207, 0.182284, -0.156137, -0.82625, 0.12642, 0.155381, -0.152887, -0.836071, -0.118932, 0.0302907, 1.93984)
+transform = Transform3D(0.820961, -0.128207, 0.182284, -0.156137, -0.82625, 0.126419, 0.155381, -0.152887, -0.836071, -0.118931, 0.0302911, 1.93984)
 bone_idx = 40
 
 [node name="AnimationPlayer" parent="Lich Model" index="1"]
