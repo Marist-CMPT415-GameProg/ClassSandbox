@@ -22,3 +22,6 @@ func update(delta:float, body:CharacterBody3D):
 
 func debug():
 	print("Idle")
+	
+func enter(animation):
+	animation.play("Survey")

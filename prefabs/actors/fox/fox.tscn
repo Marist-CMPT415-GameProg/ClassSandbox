@@ -12,8 +12,9 @@ radius = 6.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_cuo5p"]
 radius = 4.0
 
-[node name="fox" type="CharacterBody3D"]
+[node name="fox" type="CharacterBody3D" node_paths=PackedStringArray("animation")]
 script = ExtResource("1_gfoml")
+animation = NodePath("FoxModel/AnimationPlayer")
 
 [node name="FoxShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -21,6 +22,29 @@ shape = SubResource("CylinderShape3D_l8o14")
 
 [node name="FoxModel" parent="." instance=ExtResource("1_50nmm")]
 transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 0.0936143, 0.0845704, 0)
+
+[node name="Skeleton3D" parent="FoxModel/Sketchfab_model/root/GLTF_SceneRootNode/root_0/GLTF_created_0" index="0"]
+bones/3/position = Vector3(1.4506e-06, 23.0255, 33.7702)
+bones/3/rotation = Quaternion(0.172302, -0.685793, -0.172301, 0.685793)
+bones/4/rotation = Quaternion(-1.27685e-07, -1.10228e-07, -0.561765, 0.827297)
+bones/5/rotation = Quaternion(4.53796e-08, 1.19508e-08, 0.254667, 0.967029)
+bones/6/rotation = Quaternion(3.19911e-15, -3.03328e-16, -0.0943931, 0.995535)
+bones/7/rotation = Quaternion(1.77679e-08, -3.34431e-09, -0.184974, 0.982743)
+bones/8/rotation = Quaternion(-0.00375699, -0.00504417, -0.84716, 0.5313)
+bones/9/rotation = Quaternion(2.82429e-08, 2.42935e-08, 0.656836, 0.754034)
+bones/10/rotation = Quaternion(-0.00997728, 0.00854271, -0.383964, 0.923255)
+bones/11/rotation = Quaternion(0.0840019, -0.0117775, 0.99179, -0.0956984)
+bones/12/rotation = Quaternion(3.92512e-08, 3.71567e-08, 0.712084, 0.702094)
+bones/13/rotation = Quaternion(0.0888646, 0.0300928, -0.665074, 0.740861)
+bones/14/rotation = Quaternion(-1.22751e-07, 2.93609e-07, 0.983247, 0.182277)
+bones/15/rotation = Quaternion(1.91717e-22, 3.01765e-22, -0.249475, 0.968381)
+bones/16/rotation = Quaternion(-4.4531e-23, 2.05173e-22, -0.209082, 0.977898)
+bones/17/rotation = Quaternion(-0.0446164, -0.0826486, 0.863889, -0.494848)
+bones/18/rotation = Quaternion(1.03328e-08, 1.80807e-08, -0.643483, 0.76546)
+bones/19/rotation = Quaternion(-0.0275366, -0.116206, 0.67323, 0.729725)
+bones/21/rotation = Quaternion(-0.0370429, -0.0756079, -0.692786, 0.716212)
+bones/22/rotation = Quaternion(7.29575e-09, 1.63715e-08, -0.547213, 0.836993)
+bones/23/rotation = Quaternion(0.0652264, 0.155128, 0.540043, 0.824642)
 
 [node name="PredatorDetection" type="Area3D" parent="."]
 
@@ -36,3 +60,5 @@ shape = SubResource("SphereShape3D_cuo5p")
 [connection signal="body_exited" from="PredatorDetection" to="." method="predator_exited"]
 [connection signal="body_entered" from="PreyDetection" to="." method="prey_entered"]
 [connection signal="body_exited" from="PreyDetection" to="." method="prey_exited"]
+
+[editable path="FoxModel"]

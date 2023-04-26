@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 var current_state:FoxState
+@export var animation:AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,9 +14,9 @@ func _process(delta):
 	var new_state:FoxState = current_state.update(delta, self)
 	
 	if new_state != null:
-		current_state.exit(self)
+		current_state.exit(animation)
 		current_state = new_state
-		current_state.enter(self)
+		current_state.enter(animation)
 	
 	current_state.debug()
 

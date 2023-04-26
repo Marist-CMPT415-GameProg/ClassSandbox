@@ -7,3 +7,6 @@ func update(delta:float, body:CharacterBody3D):
 
 func debug():
 	print("Flee")
+
+func enter(animation):
+	animation.play("Run")

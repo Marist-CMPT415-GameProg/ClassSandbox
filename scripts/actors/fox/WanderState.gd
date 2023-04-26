@@ -36,3 +36,9 @@ func update(delta:float, body:CharacterBody3D):
 
 func debug():
 	print("Wander")
+	
+func enter(animation):
+	animation.play("Walk")
+
+func exit(animation):
+	animation.stop()

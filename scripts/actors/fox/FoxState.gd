@@ -11,11 +11,11 @@ var prey = []
 func _init():
 	pass
 
-func enter(body):
+func enter(animation):
 	pass
 
-func exit(body):
-	pass
+func exit(animation):
+	animation.stop()
 
 func update(delta:float, body:CharacterBody3D):
 	pass
