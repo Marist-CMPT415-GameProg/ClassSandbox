@@ -15,7 +15,13 @@ func _process(delta):
 	
 	if new_state != null:
 		current_state.exit(animation)
+		
+		# copy over predator and prey data
+		new_state.predators = current_state.predators
+		new_state.prey = current_state.prey
+		
 		current_state = new_state
+		
 		current_state.enter(animation)
 	
 	current_state.debug()
