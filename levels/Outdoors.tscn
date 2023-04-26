@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=9 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bu4wtr0xpsnxw" path="res://prefabs/actors/Bot/Bot.tscn" id="5_gkbow"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(100, 1, 100)
@@ -63,6 +64,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("2")]
+
+[node name="Bot" parent="Actors" instance=ExtResource("5_gkbow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5646, 0, -0.963451)
+moveSpeed = 5.0
+health = 5.0
+healthRate = 5.0
+detectDistance = 5.0
 
 [node name="UI" type="Node" parent="."]
 
