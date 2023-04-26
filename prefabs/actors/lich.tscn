@@ -93,6 +93,8 @@ speed_scale = 0.7
 [node name="Attack" type="Node" parent="State Machine"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(66.6667, 0, 0, 0, 66.6667, 0, 0, 0, 66.6667, 0, 171.455, 401.195)
+transform = Transform3D(-66.6667, 0, -1.00664e-05, 0, 66.6667, 0, 1.00664e-05, 0, -66.6667, -1.91599e-05, 193.596, 219.164)
+fov = 28.125
+near = 1.226
 
 [editable path="Lich Model"]

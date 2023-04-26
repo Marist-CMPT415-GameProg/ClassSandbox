@@ -9,6 +9,7 @@ extends CharacterBody3D
 var stateNum = 1;
 var stateReady:bool = true
 var idlePos
+var player = Character
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,8 +28,6 @@ func _process(delta):
 		chase(delta)
 	elif stateNum == 3:
 		attack()
-		
-	pass
 
 
 func idle(delta):
@@ -39,7 +38,7 @@ func idle(delta):
 		stateNum = 1
 		idleTime = 2
 	idleTime -= delta
-	pass
+
 	
 func patrol(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Walk")
@@ -47,16 +46,16 @@ func patrol(delta):
 		stateNum = 0
 	velocity.z = -walkSpeed
 	move_and_slide()
-	pass
+
 
 func chase(delta):
 	$"Lich Model/AnimationPlayer".play("Armature|Run")
-	pass
+
 	
 func attack():
 	$"Lich Model/AnimationPlayer".play("Armature|Jump")
 	stateNum = 3
-	pass
+
 
 
 

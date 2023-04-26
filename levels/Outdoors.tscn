@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34321)
 
 [node name="Lich" parent="Actors" instance=ExtResource("5_ly3dh")]
-transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 0, 0, -3.49854)
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 8.46129, 0, -18.6955)
 walkSpeed = 1
 runSpeed = 3
 
