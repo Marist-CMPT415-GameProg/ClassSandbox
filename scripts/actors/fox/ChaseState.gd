@@ -4,3 +4,6 @@ extends FoxState
 
 func update(delta:float, body:CharacterBody3D):
 	pass
+
+func debug():
+	print("Chase")

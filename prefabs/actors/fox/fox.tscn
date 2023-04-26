@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b41mvsiwcpf3i"]
+[gd_scene load_steps=6 format=3 uid="uid://b41mvsiwcpf3i"]
 
 [ext_resource type="PackedScene" uid="uid://cn0c1l1kodksc" path="res://art/fox_model/azeria/scene.gltf" id="1_50nmm"]
 [ext_resource type="Script" path="res://scripts/actors/fox/FoxController.gd" id="1_gfoml"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l8o14"]
 height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eyijo"]
+radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cuo5p"]
+radius = 4.0
 
 [node name="fox" type="CharacterBody3D"]
 script = ExtResource("1_gfoml")
@@ -14,4 +20,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CylinderShape3D_l8o14")
 
 [node name="FoxModel" parent="." instance=ExtResource("1_50nmm")]
-transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, -0.0791696, 0.0845704, 0)
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 0.0936143, 0.0845704, 0)
+
+[node name="PredatorDetection" type="Area3D" parent="."]
+
+[node name="DetectionArea" type="CollisionShape3D" parent="PredatorDetection"]
+shape = SubResource("SphereShape3D_eyijo")
+
+[node name="PreyDetection" type="Area3D" parent="."]
+
+[node name="DetectionArea" type="CollisionShape3D" parent="PreyDetection"]
+shape = SubResource("SphereShape3D_cuo5p")
+
+[connection signal="body_entered" from="PredatorDetection" to="." method="predator_entered"]
+[connection signal="body_exited" from="PredatorDetection" to="." method="predator_exited"]
+[connection signal="body_entered" from="PreyDetection" to="." method="prey_entered"]
+[connection signal="body_exited" from="PreyDetection" to="." method="prey_exited"]

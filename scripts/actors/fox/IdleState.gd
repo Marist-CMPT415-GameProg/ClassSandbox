@@ -8,6 +8,11 @@ func _init():
 	currentTime = timeUntilWander
 
 func update(delta:float, body:CharacterBody3D):
+	if not predators.is_empty():
+		return FleeState.new()
+	elif not prey.is_empty():
+		return ChaseState.new()
+	
 	currentTime -= delta
 	
 	if (currentTime <= 0):
