@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=10 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
@@ -12,6 +12,9 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="2"]
 albedo_color = Color(0.45098, 0.364706, 0.25098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1n4w"]
+size = Vector3(1, 20.9018, 100.535)
 
 [node name="Outdoors" type="Node3D"]
 
@@ -65,6 +68,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 
 [node name="Player" parent="Actors" instance=ExtResource("2")]
 
+[node name="FollowCamera" parent="Actors/Player/CameraRoot" index="0"]
+current = true
+
 [node name="UI" type="Node" parent="."]
 
 [node name="StatHUD" parent="UI" instance=ExtResource("5")]
@@ -73,6 +79,24 @@ grow_vertical = 2
 
 [node name="fox" parent="." instance=ExtResource("6_kn8mc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87604, 0, -5.08806)
+
+[node name="bounds" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 10, 0)
+shape = SubResource("BoxShape3D_y1n4w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0)
+shape = SubResource("BoxShape3D_y1n4w")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10, 50)
+shape = SubResource("BoxShape3D_y1n4w")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10, -50)
+shape = SubResource("BoxShape3D_y1n4w")
 
 [connection signal="changed" from="Actors/Player/CharacterStats/Health" to="UI/StatHUD" method="on_stat_changed" binds= ["HealthBar"]]
 [connection signal="changed" from="Actors/Player/CharacterStats/Stamina" to="UI/StatHUD" method="on_stat_changed" binds= ["StaminaBar"]]
