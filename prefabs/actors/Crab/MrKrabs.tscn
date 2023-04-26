@@ -21,50 +21,61 @@ transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0, 0)
 
 [node name="Krabs" type="Node3D" parent="."]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Krabs"]
+[node name="KrabsBody" type="CharacterBody3D" parent="Krabs"]
 script = ExtResource("1_sv7mq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Krabs/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Krabs/KrabsBody"]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 19.8675, 63.1104, 0)
 shape = SubResource("CapsuleShape3D_00da5")
 
-[node name="scene" parent="Krabs/CharacterBody3D" instance=ExtResource("1_cby2l")]
+[node name="scene" parent="Krabs/KrabsBody" instance=ExtResource("1_cby2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22937, 0, -3.40908)
 
-[node name="Body" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode" index="0"]
+[node name="Body" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.8085, -47.2643, -7.62939e-06)
 
-[node name="Right_leg" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="9"]
+[node name="Right_leg" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="9"]
 transform = Transform3D(1.33782e-08, 0.306057, 0, -0.306057, 1.33782e-08, 0, 0, 0, -0.306057, -63.2757, 7.50213e-06, -63.3605)
 
-[node name="Left_leg" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="10"]
-transform = Transform3D(8.78078e-08, 0.301407, 0.0531462, -0.306057, 8.63479e-08, 1.59621e-08, -7.25469e-10, 0.0531462, -0.301407, 61.8582, 9.1963e-06, -102.119)
+[node name="Left_leg" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="10"]
+transform = Transform3D(8.78078e-08, 0.301407, 0.0531462, -0.306057, 8.63478e-08, 1.59621e-08, -7.25469e-10, 0.0531462, -0.301407, 61.8582, 9.1963e-06, -102.119)
 
-[node name="Right_shoulder" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="11"]
-transform = Transform3D(-3.26073e-08, 0.130331, -0.22574, -0.260663, -1.13939e-08, 3.10734e-08, 5.66927e-09, 0.22574, 0.130331, -104.311, 8.97076e-07, 79.0831)
+[node name="Right_shoulder" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="11"]
+transform = Transform3D(-3.26074e-08, 0.130331, -0.22574, -0.260663, -1.13939e-08, 3.10733e-08, 5.66928e-09, 0.22574, 0.130331, -104.311, 8.97076e-07, 79.0831)
 
-[node name="Right_hand" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Right_shoulder/Right_arm" index="1"]
-transform = Transform3D(1, 6.21836e-24, -2.2633e-24, -6.61744e-24, 0.939693, -0.34202, 0, 0.34202, 0.939693, -1.38406, -44.0068, 109.541)
+[node name="Right_hand" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Right_shoulder/Right_arm" index="1"]
+transform = Transform3D(1, 6.21837e-24, -2.2633e-24, -6.61744e-24, 0.939693, -0.34202, 0, 0.34202, 0.939693, -1.38406, -44.0068, 109.541)
 
-[node name="Right_claw" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Right_shoulder/Right_arm/Right_hand" index="1"]
-transform = Transform3D(-0.52017, 1.00075e-07, 8.95682e-08, -1.38019e-07, -0.19666, -0.421739, -5.90722e-08, -0.421739, 0.19666, -1.19209e-07, 0, -2.84217e-14)
+[node name="Right_claw" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Right_shoulder/Right_arm/Right_hand" index="1"]
+transform = Transform3D(-0.52017, 1.00075e-07, 8.95683e-08, -1.38019e-07, -0.19666, -0.421739, -5.90722e-08, -0.421739, 0.19666, -1.19209e-07, 0, -2.84217e-14)
 
-[node name="Left_shoulder" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="12"]
-transform = Transform3D(6.36605e-08, -0.130331, 0.22574, 0.260663, 1.96795e-08, -6.21468e-08, 1.40305e-08, 0.22574, 0.130331, 106.053, 1.38411, 79.0831)
+[node name="Left_shoulder" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body" index="12"]
+transform = Transform3D(6.36606e-08, -0.130331, 0.22574, 0.260663, 1.96794e-08, -6.21467e-08, 1.40305e-08, 0.22574, 0.130331, 106.053, 1.38411, 79.0831)
 
-[node name="Left_hand" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Left_shoulder/Left_arm" index="1"]
+[node name="Left_hand" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Left_shoulder/Left_arm" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -1.38406, -44.0068, 109.541)
 
-[node name="Left_claw" parent="Krabs/CharacterBody3D/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Left_shoulder/Left_arm/Left_hand" index="1"]
-transform = Transform3D(-0.52017, 1.00075e-07, 8.95682e-08, -1.38019e-07, -0.19666, -0.421739, -5.90722e-08, -0.421739, 0.19666, -6.05651e-08, 0, 0)
+[node name="Left_claw" parent="Krabs/KrabsBody/scene/Sketchfab_model/Mr KrabsFBX/Object_2/RootNode/Body/Left_shoulder/Left_arm/Left_hand" index="1"]
+transform = Transform3D(-0.52017, 1.00075e-07, 8.95683e-08, -1.38019e-07, -0.19666, -0.421739, -5.90722e-08, -0.421739, 0.19666, -6.05651e-08, 0, 0)
 
-[node name="AnimationTree" type="AnimationTree" parent="Krabs/CharacterBody3D/scene"]
+[node name="AnimationTree" type="AnimationTree" parent="Krabs/KrabsBody/scene"]
 tree_root = SubResource("AnimationNodeStateMachine_piew5")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_451mb")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Krabs/CharacterBody3D"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Krabs/KrabsBody"]
+avoidance_enabled = true
+max_neighbors = 50
+max_speed = 1.5
 
-[node name="RayCast3D" type="RayCast3D" parent="Krabs/CharacterBody3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Krabs/KrabsBody"]
 
-[editable path="Krabs/CharacterBody3D/scene"]
+[node name="MoveTimer" type="Timer" parent="Krabs/KrabsBody"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="navigation_finished" from="Krabs/KrabsBody/NavigationAgent3D" to="Krabs/KrabsBody" method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="velocity_computed" from="Krabs/KrabsBody/NavigationAgent3D" to="Krabs/KrabsBody" method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Krabs/KrabsBody/MoveTimer" to="Krabs/KrabsBody" method="_on_move_timer_timeout"]
+
+[editable path="Krabs/KrabsBody/scene"]
