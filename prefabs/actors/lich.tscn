@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6fabug5tu7b"]
+
+[ext_resource type="Script" path="res://scripts/actors/Lich Scripts/Lich.gd" id="1_xvfi3"]
+[ext_resource type="PackedScene" uid="uid://br6owaarmge5p" path="res://art/Lich/scene.gltf" id="2_f7xmp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_32oog"]
+height = 232.033
+radius = 74.3369
+
+[node name="Lich" type="CharacterBody3D"]
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 0, 0, 0)
+script = ExtResource("1_xvfi3")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.63425e-13, 0, 1, 0, -1.63425e-13, 0, 1, 0, 117.72, 0)
+shape = SubResource("CylinderShape3D_32oog")
+
+[node name="Lich Model" parent="." instance=ExtResource("2_f7xmp")]
+
+[node name="Skeleton3D" parent="Lich Model/Sketchfab_model/712a9e8fe1184e03bc095bef8d28b3cafbx/Object_2/RootNode/Armature/Object_6" index="0"]
+bones/2/rotation = Quaternion(-0.652001, -0.0703553, 0.0609612, 0.752481)
+bones/4/rotation = Quaternion(-0.0242911, 0.000796606, -0.0081956, 0.999671)
+bones/5/rotation = Quaternion(0.0925472, 0.0853866, 0.0921863, 0.987748)
+bones/7/rotation = Quaternion(-0.561814, 0.364929, 0.562347, 0.484725)
+bones/8/rotation = Quaternion(-0.320184, -0.710518, 0.19877, 0.594253)
+bones/9/rotation = Quaternion(0.245508, -0.0119805, 0.118352, 0.962068)
+bones/10/rotation = Quaternion(0.00159189, -0.00263039, 0.127589, 0.991822)
+bones/11/rotation = Quaternion(-0.222736, -0.723505, -0.0753701, 0.649036)
+bones/12/rotation = Quaternion(0.496659, -0.0250275, -0.0436638, 0.866485)
+bones/13/rotation = Quaternion(0.183462, -0.00940327, -0.0503164, 0.981693)
+bones/14/rotation = Quaternion(-0.372128, -0.634467, 0.00723745, 0.677436)
+bones/15/rotation = Quaternion(0.552794, -0.0279734, -0.0420914, 0.831784)
+bones/16/rotation = Quaternion(0.244938, 0.0210275, 0.0104162, 0.969255)
+bones/17/rotation = Quaternion(0.0313304, -0.74711, -0.210357, 0.629758)
+bones/18/rotation = Quaternion(0.440789, 0.000465685, 0.000943896, 0.89761)
+bones/19/rotation = Quaternion(0.189488, 0.0261129, 0.0283377, 0.981127)
+bones/20/rotation = Quaternion(-0.352419, 0.74782, 0.48855, -0.279081)
+bones/21/rotation = Quaternion(0.235283, -0.0200992, -0.0827087, 0.968193)
+bones/22/rotation = Quaternion(0.274216, -0.0201689, -0.0705254, 0.958866)
+bones/23/rotation = Quaternion(0.561814, 0.364929, 0.562347, -0.484725)
+bones/24/rotation = Quaternion(-0.325144, 0.711313, -0.196223, 0.591449)
+bones/25/rotation = Quaternion(0.263766, 0.00551633, -0.0931483, 0.960063)
+bones/26/rotation = Quaternion(0.00169036, 0.00256821, -0.0899375, 0.995943)
+bones/27/rotation = Quaternion(-0.174822, 0.727075, 0.0224191, 0.663549)
+bones/28/rotation = Quaternion(0.391996, 0.0197534, 0.0462895, 0.918589)
+bones/29/rotation = Quaternion(0.125688, 0.00644271, 0.0507795, 0.990748)
+bones/30/rotation = Quaternion(-0.310331, 0.639999, -0.0430431, 0.701601)
+bones/31/rotation = Quaternion(0.453907, 0.0229692, 0.0450178, 0.889615)
+bones/32/rotation = Quaternion(0.188947, -0.0203955, -0.011605, 0.981707)
+bones/33/rotation = Quaternion(0.0483066, 0.744847, 0.215879, 0.629496)
+bones/34/rotation = Quaternion(0.480412, -0.000505664, -0.000922916, 0.877042)
+bones/35/rotation = Quaternion(0.242177, -0.0276046, -0.0268867, 0.969466)
+bones/36/rotation = Quaternion(0.341461, 0.728541, 0.516859, 0.292386)
+bones/37/rotation = Quaternion(0.332207, -0.0393633, 0.136705, 0.932417)
+bones/38/rotation = Quaternion(0.318503, 0.0234262, 0.0695115, 0.945079)
+bones/42/rotation = Quaternion(0.96219, -0.114376, 0.214514, 0.122846)
+bones/43/rotation = Quaternion(0.281668, -0.0232825, -0.0212657, 0.958994)
+bones/44/rotation = Quaternion(-0.607072, 0.0219233, -0.100401, 0.787973)
+bones/45/rotation = Quaternion(-1.0992e-06, 0.94551, -0.325594, 3.47682e-06)
+bones/46/rotation = Quaternion(-0.000215841, 0.084522, 0.996415, 0.00370319)
+bones/48/rotation = Quaternion(0.186794, -0.00314055, -0.0121681, 0.982319)
+bones/49/rotation = Quaternion(0.99928, -0.0328111, 0.00409676, 0.0186146)
+bones/50/rotation = Quaternion(-0.0605478, -0.000401283, -0.00141043, 0.998164)
+bones/51/rotation = Quaternion(-0.00511912, -0.000788613, 0.0113624, 0.999922)
+bones/52/rotation = Quaternion(0.0371832, -0.00106694, 0.0286621, 0.998897)
+bones/54/rotation = Quaternion(0.935544, 0.0986603, -0.0978949, 0.324715)
+bones/56/rotation = Quaternion(-0.495148, -0.0387775, 0.0329245, 0.867318)
+bones/58/rotation = Quaternion(-0.425849, 0.199541, 0.882051, -0.0286648)
+bones/59/rotation = Quaternion(-0.189525, 0.158487, -0.0851613, 0.965251)
+bones/60/rotation = Quaternion(0.0365419, -0.251238, -0.189589, 0.948473)
+bones/61/rotation = Quaternion(0.991986, 0.0395818, 0.103995, 0.0598522)
+bones/62/rotation = Quaternion(-0.0458621, 0.000422031, 0.00140441, 0.998947)
+bones/63/rotation = Quaternion(-0.00511912, 0.000788625, -0.0113624, 0.999922)
+bones/64/rotation = Quaternion(0.0371832, 0.00106696, -0.0286621, 0.998897)
+bones/65/rotation = Quaternion(0.958894, 0.283766, -3.86221e-07, -2.45718e-08)
+bones/67/rotation = Quaternion(0.99981, -0.019491, -4.3531e-07, 1.24697e-07)
+
+[node name="Sword_Material_0" parent="Lich Model/Sketchfab_model/712a9e8fe1184e03bc095bef8d28b3cafbx/Object_2/RootNode/Armature/Object_6/Skeleton3D" index="0"]
+transform = Transform3D(0.820961, -0.128207, 0.182284, -0.156137, -0.82625, 0.126419, 0.155381, -0.152887, -0.836071, -0.118931, 0.0302911, 1.93984)
+bone_idx = 40
+
+[node name="AnimationPlayer" parent="Lich Model" index="1"]
+speed_scale = 0.7
+
+[node name="State Machine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="State Machine"]
+
+[node name="Patrol" type="Node" parent="State Machine"]
+
+[node name="Chase" type="Node" parent="State Machine"]
+
+[node name="Attack" type="Node" parent="State Machine"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-66.6667, 0, -1.00664e-05, 0, 66.6667, 0, 1.00664e-05, 0, -66.6667, -1.91599e-05, 193.596, 219.164)
+fov = 28.125
+near = 1.226
+
+[editable path="Lich Model"]
