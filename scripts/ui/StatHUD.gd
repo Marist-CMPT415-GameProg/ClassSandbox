@@ -28,3 +28,9 @@ func _ready():
 ## so that this script knows which UI stat bar to update
 func on_stat_changed(level:int, stat_bar_name:String):
 	get_node(stat_bar_name).set_size(Vector2(level * bar_width / 100, bar_height))
+
+func on_health_changed(level:int):
+	$HealthBar.set_size(Vector2(level * bar_width / 100, bar_height))
+
+func on_stamina_changed(level:int):
+	$StaminaBar.set_size(Vector2(level * bar_width / 100, bar_height))
