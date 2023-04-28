@@ -475,6 +475,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_thhlq")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4styh"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_ml4ql"]
 resource_name = "walk-loop"
