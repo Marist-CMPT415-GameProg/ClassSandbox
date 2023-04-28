@@ -1,5 +1,5 @@
 class_name BotController
-extends Node
+extends CharacterBody3D
 
 @export var moveSpeed:float
 @export var health:float
@@ -14,6 +14,6 @@ var player
 func _ready():
 	player = get_node("../Player")
 
-func _physics_process(_delta):
+func _process(delta):
 	animPlayer.play("walk")
-	#look_at(player, Vector3.UP)
+	position = position.move_toward(player.position, moveSpeed * delta)

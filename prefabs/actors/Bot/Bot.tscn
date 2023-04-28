@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bu4wtr0xpsnxw"]
+[gd_scene load_steps=50 format=3 uid="uid://bu4wtr0xpsnxw"]
 
 [ext_resource type="Script" path="res://scripts/actors/Bot/BotController.gd" id="2_58v67"]
 [ext_resource type="Material" path="res://art/Bot/Metal.material" id="2_f736u"]
@@ -474,6 +474,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_thhlq")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4styh"]
+
 [sub_resource type="Animation" id="Animation_ml4ql"]
 resource_name = "walk-loop"
 length = 0.833333
@@ -540,7 +542,7 @@ _data = {
 "walk": SubResource("Animation_ml4ql")
 }
 
-[node name="Bot" type="Node3D"]
+[node name="Bot" type="CharacterBody3D"]
 script = ExtResource("2_58v67")
 
 [node name="Rig" type="Node3D" parent="."]
@@ -674,6 +676,9 @@ transform = Transform3D(1.04966, -0.568536, 0.241393, -0.589009, -1.06464, 0.053
 mesh = SubResource("ArrayMesh_30fx3")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_f736u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4styh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
