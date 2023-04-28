@@ -30,6 +30,10 @@ func _init():
 	changed.emit(level)
 
 
+func _ready():
+	changed.emit(level)
+
+
 ## Indicates whether this resources is at its [member min_level]
 func is_empty():
 	return level == min_level

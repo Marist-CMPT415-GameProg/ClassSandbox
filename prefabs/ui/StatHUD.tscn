@@ -22,9 +22,6 @@ offset_bottom = 20.0
 
 [node name="StaminaBar" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
+offset_top = 30.0
 offset_right = 20.0
-grow_vertical = 0
+offset_bottom = 50.0

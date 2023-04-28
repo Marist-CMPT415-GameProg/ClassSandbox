@@ -1,0 +1,11 @@
+Model Information:
+* title:	Faceted Character (Locomotion Animation)
+* source:	https://sketchfab.com/3d-models/faceted-character-locomotion-animation-cf74a482394043c281efd56ad5484df4
+* author:	Fabian Orrego (https://sketchfab.com/fabian_orrego)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Faceted Character (Locomotion Animation)" (https://sketchfab.com/3d-models/faceted-character-locomotion-animation-cf74a482394043c281efd56ad5484df4) by Fabian Orrego (https://sketchfab.com/fabian_orrego) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
