@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://chjdiuwxh70xc"]
+
+[ext_resource type="Script" path="res://prefabs/actors/Crab/crab.gd" id="1_p2fuy"]
+[ext_resource type="PackedScene" uid="uid://denbflirs2ibv" path="res://prefabs/actors/Crab/little_hermit_crab/scene.gltf" id="2_25hxk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ml1bo"]
+radius = 0.819323
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2g1h"]
+radius = 0.834755
+height = 1.66951
+
+[sub_resource type="Animation" id="Animation_8y1y5"]
+resource_name = "Normal"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.349066, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ojxyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sa0by"]
+_data = {
+"Normal": SubResource("Animation_8y1y5"),
+"RESET": SubResource("Animation_ojxyc")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_p2fuy")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999326, -0.0367135, 0, 0.0367135, 0.999326, -0.0321285, 0.445501, -1.43378)
+shape = SubResource("SphereShape3D_ml1bo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.146722, -0.989178, 0, 0.989178, 0.146722, 0.198246, 0, -0.23439)
+shape = SubResource("CapsuleShape3D_a2g1h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_sa0by")
+}
+
+[node name="scene" parent="CharacterBody3D" instance=ExtResource("2_25hxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253343, 1.19209e-07, -0.647289)
+
+[editable path="CharacterBody3D/scene"]

@@ -90,7 +90,3 @@ func on_crouch(do_crouch:bool):
 	else:
 		target_speed = walk_speed
 		tween.tween_property(self, "scale", Vector3.ONE, 0.1)
-
-
-func on_sprinted(extra_arg_0):
-	pass # Replace with function body.

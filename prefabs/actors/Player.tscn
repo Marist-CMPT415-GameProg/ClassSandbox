@@ -25,7 +25,7 @@ follow_target = NodePath("../Character/FollowTarget")
 [node name="FollowCamera" type="Camera3D" parent="CameraRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
-[node name="Character" type="CharacterBody3D" parent="."]
+[node name="Character" type="CharacterBody3D" parent="." groups=["prey"]]
 script = ExtResource("4")
 
 [node name="Collider" type="CollisionShape3D" parent="Character"]

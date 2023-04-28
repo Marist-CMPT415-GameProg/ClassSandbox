@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mr Krabs (Spongebob)
+* source:	https://sketchfab.com/3d-models/mr-krabs-spongebob-d7e712d733ae4de69623cd408d68a289
+* author:	Anthony Yanez (https://sketchfab.com/paulyanez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mr Krabs (Spongebob)" (https://sketchfab.com/3d-models/mr-krabs-spongebob-d7e712d733ae4de69623cd408d68a289) by Anthony Yanez (https://sketchfab.com/paulyanez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
