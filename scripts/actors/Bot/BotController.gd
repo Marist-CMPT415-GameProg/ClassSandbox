@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var healingRate:float
 @export var detectDistance:float
 @export var ammo:float
-@export var projectile:Node3D #TODO: make this our own class
+@export var projectile:Node3D #TODO: Make this our own class.
 @onready var animPlayer = get_node("AnimationPlayer")
 @onready var audioPlayer = get_node("AudioStreamPlayer3D")
 var direction:Vector3
@@ -18,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	animPlayer.play("walk")
-	#TODO: move/rotate towards the player every frame
+	#TODO: Move/rotate towards the player every frame.
 	position = position.move_toward(player.position, moveSpeed * delta)
 
 func save_data():
@@ -28,7 +28,7 @@ func save_data():
 		"pos_x" : position.x,
 		"pos_y" : position.y,
 		"pos_z" : position.z,
-		"rot" : rotation,
+		"rotation" : rotation,
 		"current_health" : currentHealth,
 		"max_health" : maxHealth,
 		"healing_rate" : healingRate,
@@ -37,3 +37,15 @@ func save_data():
 		"detect_distance" : detectDistance
 	}
 	return save_dict
+
+func load_data(data):
+	var new_object = load(data["filename"]).instantiate()
+	get_node(data["parent"]).add_child(new_object)
+	position = Vector3(data["pos_x"], data["pos_y"], data["pos.z"])
+	rotation = data["rotation"]
+	currentHealth = data["current_health"]
+	maxHealth = data["max_health"]
+	healingRate = data["healing_rate"]
+	ammo = data["ammo"]
+	moveSpeed = data["move_speed"]
+	detectDistance = data["detect_distance"]
