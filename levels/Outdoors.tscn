@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
 [ext_resource type="PackedScene" uid="uid://jh5qvi3kwoxs" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 [ext_resource type="PackedScene" uid="uid://b41mvsiwcpf3i" path="res://prefabs/actors/fox/fox.tscn" id="6_kn8mc"]
 
@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 fill_rate = 5
 drain_rate = 15
 
-[node name="Lich" parent="Actors" instance=ExtResource("5_ly3dh")]
+[node name="Lich" parent="Actors" groups=["persist"] instance=ExtResource("5_ly3dh")]
 transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 8.46129, 0, -18.6955)
 walkSpeed = 1
 runSpeed = 3

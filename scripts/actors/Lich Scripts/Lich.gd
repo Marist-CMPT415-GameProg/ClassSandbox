@@ -5,12 +5,16 @@ extends CharacterBody3D
 @export var idleTime = 2
 @export var walkSpeed = 3
 @export var runSpeed = 15
+@export var damage = 10
+@export var health = 200
 
-var stateNum = 1;
-var stateReady:bool = true
-var idlePos
+var stateNum = 1
+var idlePos:Vector3
 var player = Character
 var dir
+
+var curr_health = 200
+var is_alive:bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,6 +64,45 @@ func chase(delta):
 func attack():
 	$"Lich Model/AnimationPlayer".play("Armature|Jump")
 	stateNum = 3
+
+func save_data():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"idlePos_x" : idlePos.x,
+		"idlePos_y" : idlePos.y,
+		"idlePos_z" : idlePos.z,
+		"dir" : dir,
+		"health" : health,
+		"curr_health" : curr_health,
+		"damage" : damage,
+		"stateNum" : stateNum,
+		"is_alive" : is_alive
+	}
+	return save_dict
+
+func load_data(data):
+	position = Vector3(data["pos_x"],data["pos_y"],data["pos_z"])
+	idlePos = Vector3(data["idlePos_x"],data["idlePos_y"],data["idlePos_z"])
+	
+	for prop in data.keys():
+		if prop.substr(0,3) == "pos" or prop == "idlePos":
+			continue
+	
+
+
+
+
+
+
+
+
+
+
+
 
 
 
