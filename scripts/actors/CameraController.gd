@@ -81,10 +81,12 @@ func look(angles:Vector2):
 
 ## Smoothly transition between first- and third-person views
 func zoom(zoom_in:bool):
-	var camera = get_viewport().get_camera()
+	var camera = get_viewport().get_camera_3d()
 	var tween = get_tree().create_tween()
 	if zoom_in:
-		tween.tween_property(camera, "translation", Vector3.ZERO, 0.2)
+		tween.tween_property(camera, "position", Vector3.ZERO, 0.2)
+		tween.connect("finished", func():camera.set_cull_mask_value(2, false))
 	else:
-		tween.tween_property(camera, "translation", third_person_position, 0.2)
+		tween.tween_property(camera, "position", third_person_position, 0.2)
+		camera.set_cull_mask_value(2, true)
 	emit_signal("changed", zoom_in)
