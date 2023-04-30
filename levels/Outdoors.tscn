@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=17 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" uid="uid://dwuy7i2jy2l5s" path="res://prefabs/environment/FirTree.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_qk56a"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://bu4wtr0xpsnxw" path="res://prefabs/actors/Bot/Bot.tscn" id="5_gkbow"]
-[ext_resource type="PackedScene" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
 [ext_resource type="PackedScene" uid="uid://jh5qvi3kwoxs" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 [ext_resource type="PackedScene" uid="uid://b41mvsiwcpf3i" path="res://prefabs/actors/fox/fox.tscn" id="6_kn8mc"]
 
@@ -29,6 +30,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 size = Vector3(1, 20.9018, 100.535)
 
 [node name="Outdoors" type="Node3D"]
+script = ExtResource("1_qk56a")
 
 [node name="Environment" type="Node" parent="."]
 
