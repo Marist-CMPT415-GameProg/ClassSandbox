@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://bu4wtr0xpsnxw" path="res://prefabs/actors/Bot/Bot.tscn" id="5_gkbow"]
-[ext_resource type="PackedScene" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
 [ext_resource type="PackedScene" uid="uid://jh5qvi3kwoxs" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 [ext_resource type="PackedScene" uid="uid://b41mvsiwcpf3i" path="res://prefabs/actors/fox/fox.tscn" id="6_kn8mc"]
 
@@ -122,8 +122,6 @@ drain_rate = 15
 [node name="Bot" parent="Actors" instance=ExtResource("5_gkbow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5646, 0, -0.963451)
 moveSpeed = 5.0
-health = 5.0
-healthRate = 5.0
 detectDistance = 5.0
 
 [node name="Lich" parent="Actors" instance=ExtResource("5_ly3dh")]
