@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=17 format=3 uid="uid://bunujm1i14cww"]
 
 [ext_resource type="PackedScene" uid="uid://dwuy7i2jy2l5s" path="res://prefabs/environment/FirTree.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_qk56a"]
 [ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
@@ -29,6 +30,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 size = Vector3(1, 20.9018, 100.535)
 
 [node name="Outdoors" type="Node3D"]
+script = ExtResource("1_qk56a")
 
 [node name="Environment" type="Node" parent="."]
 

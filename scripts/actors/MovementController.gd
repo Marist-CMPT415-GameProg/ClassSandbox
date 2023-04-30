@@ -118,3 +118,37 @@ func on_look(angle:float):
 ## Faciliates adjusting the movement mechanics based on the camera viewpoint
 func on_view_changed(is_first_person:bool):
 	is_camera_first_person = is_first_person
+
+
+func save_data():
+	var saved_data = {
+		"health": $CharacterStats/Health.max_level,
+		"stamina": $CharacterStats/Stamina.max_level,
+		"stamina_fill": $CharacterStats/Stamina.fill_rate,
+		"stamina_drain": $CharacterStats/Stamina.drain_rate,
+		"xpos": $Character.position.x,
+		"ypos": $Character.position.y,
+		"zpos": $Character.position.z,
+		"walk_speed": $Character.walk_speed,
+		"run_speed": $Character.run_speed,
+		"turn_speed": $Character.turn_speed,
+		"crouch_speed": $Character.crouch_speed,
+		"crouch_height": $Character.crouch_height,
+		"jump_height": $Character.jump_height,
+		"acceleration": $Character.acceleration
+	}
+	return saved_data
+
+func load_data(data):
+	$CharacterStats/Health.max_level = data["health"]
+	$CharacterStats/Stamina.max_level = data["stamina"]
+	$CharacterStats/Stamina.fill_rate = data["stamina_fill"]
+	$CharacterStats/Stamina.drain_rate = data["stamina_drain"]
+	$Character.position = Vector3(data["xpos"], data["zpos"], data["zpos"])
+	$Character.walk_speed = data["walk_speed"]
+	$Character.run_speed = data["run_speed"]
+	$Character.turn_speed = data["turn_speed"]
+	$Character.crouch_speed = data["crouch_speed"]
+	$Character.crouch_height = data["crouch_height"]
+	$Character.jump_height = data["jump_height"]
+	$Character.acceleration = data["acceleration"]

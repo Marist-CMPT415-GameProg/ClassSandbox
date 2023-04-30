@@ -12,7 +12,7 @@ radius = 6.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_cuo5p"]
 radius = 4.0
 
-[node name="fox" type="CharacterBody3D" node_paths=PackedStringArray("animation")]
+[node name="fox" type="CharacterBody3D" node_paths=PackedStringArray("animation") groups=["persist"]]
 script = ExtResource("1_gfoml")
 animation = NodePath("FoxModel/AnimationPlayer")
 

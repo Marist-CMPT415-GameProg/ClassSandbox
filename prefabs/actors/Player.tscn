@@ -9,7 +9,7 @@
 height = 1.8
 radius = 0.6
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" groups=["persist"]]
 script = ExtResource("2")
 controlled_body = NodePath("Character")
 is_sprint_toggle = true
