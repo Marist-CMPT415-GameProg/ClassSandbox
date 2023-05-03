@@ -15,20 +15,23 @@ var player
 
 func _ready():
 	player = get_node("../Player")
+	print("Bot ready: ", player)
 
 func _process(delta):
 	animPlayer.play("walk")
 	#TODO: Move/rotate towards the player every frame.
+	if player == null:
+		print("Where is Player?")
 	position = position.move_toward(player.position, moveSpeed * delta)
 
 func save_data():
 	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
+#		"filename" : get_scene_file_path(),
+#		"parent" : get_parent().get_path(),
 		"pos_x" : position.x,
 		"pos_y" : position.y,
 		"pos_z" : position.z,
-		"rotation" : rotation,
+#		"rotation" : rotation,
 		"current_health" : currentHealth,
 		"max_health" : maxHealth,
 		"healing_rate" : healingRate,
@@ -39,13 +42,14 @@ func save_data():
 	return save_dict
 
 func load_data(data):
-	var new_object = load(data["filename"]).instantiate()
-	get_node(data["parent"]).add_child(new_object)
-	position = Vector3(data["pos_x"], data["pos_y"], data["pos.z"])
-	rotation = data["rotation"]
+#	var new_object = load(data["filename"]).instantiate()
+#	get_node(data["parent"]).add_child(new_object)
+	position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
+#	rotation = data["rotation"]
 	currentHealth = data["current_health"]
 	maxHealth = data["max_health"]
 	healingRate = data["healing_rate"]
 	ammo = data["ammo"]
 	moveSpeed = data["move_speed"]
 	detectDistance = data["detect_distance"]
+	print("Bot loaded: ", player)

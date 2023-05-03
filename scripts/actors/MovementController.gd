@@ -54,6 +54,7 @@ func _ready():
 	connect("sprinted", receiver.on_sprint)
 	connect("crouched", receiver.on_crouch)
 	connect("jumped", receiver.on_jump)
+	print("Player ready: ", self)
 
 
 func _input(event):
@@ -152,3 +153,5 @@ func load_data(data):
 	$Character.crouch_height = data["crouch_height"]
 	$Character.jump_height = data["jump_height"]
 	$Character.acceleration = data["acceleration"]
+	print("Player loaded: ", self)
+

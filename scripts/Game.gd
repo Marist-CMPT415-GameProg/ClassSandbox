@@ -23,6 +23,7 @@ func save_game():
 			continue
 		# Call the node's save function.
 #		var node_data = node.call("save_data")
+		print("saving ", node.name)
 		var node_data = node.save_data()
 		node_data["filename"] = node.get_scene_file_path()
 		node_data["parent"] = node.get_parent().get_path()
@@ -30,7 +31,6 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 		# Store the save dictionary as a new line in the save file.
 		save_file.store_line(json_string)
-		print(json_string)
 	print("game saved")
 	get_tree().paused = false
 
@@ -66,7 +66,9 @@ func load_game():
 		get_node(node_data["parent"]).add_child(new_object)
 		node_data.erase("filename")
 		node_data.erase("parent")
+		print("Loading ", new_object.name, ": ", new_object)
 		new_object.load_data(node_data)
+		
 #		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 #		# Now we set the remaining variables.
 #		for i in node_data.keys():
