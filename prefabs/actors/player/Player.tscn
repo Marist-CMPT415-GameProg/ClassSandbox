@@ -30,14 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("stamina") groups=["prey"]]
 script = ExtResource("4_qsg5l")
-walk_speed = null
-run_speed = null
-turn_speed = null
-crouch_speed = null
-crouch_height = null
-jump_height = null
-acceleration = null
-fall_delay = null
 stamina = NodePath("../CharacterStats/Stamina")
 
 [node name="StandingCollider" type="CollisionShape3D" parent="Character"]
@@ -46,6 +38,7 @@ shape = SubResource("1")
 
 [node name="CrouchingCollider" type="CollisionShape3D" parent="Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+visible = false
 shape = SubResource("CylinderShape3D_nwa57")
 
 [node name="FollowTarget" type="Node3D" parent="Character"]

@@ -144,11 +144,6 @@ func jump():
 	if is_on_floor():
 		velocity.y += jump_force
 		jumped.emit()
-## Apply a vertical jump impulse to the character velocity
-func on_jumped():
-	var jump_force = sqrt(2.0 * jump_height * gravity)
-	if is_on_floor():
-		velocity.y += jump_force
 
 
 ## Reduce character height and speed while crouching
@@ -157,9 +152,4 @@ func crouch(do_crouch:bool):
 	$StandingCollider.disabled = do_crouch
 	$CrouchingCollider.disabled = not do_crouch
 	crouched.emit(do_crouch)
-## Reduce character height and speed while crouching
-func on_crouched(do_crouch:bool):
-	target_speed = crouch_speed if do_crouch else walk_speed
-	$StandingCollider.disabled = do_crouch
-	$CrouchingCollider.disabled = not do_crouch
-	crouched.emit(do_crouch)
+

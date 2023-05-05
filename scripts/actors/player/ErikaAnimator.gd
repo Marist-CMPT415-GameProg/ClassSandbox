@@ -4,7 +4,6 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(animator)
 	animator.play("Idle")
 
 
@@ -19,6 +18,7 @@ func on_body_moved(motion:Vector3, is_running:bool):
 			"CrouchedSneakingLeft":
 				animator.play("IdleCrouchLeft")
 			"Running":
+				# QUEUE the Idle animation to run after the RunToStop animation
 				animator.animation_set_next("RunToStop", "Idle")
 				animator.play("RunToStop")
 			"Walking":
