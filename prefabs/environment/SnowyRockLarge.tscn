@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc5cnsh74qnvt"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://bffj17ltvomwu" path="res://art/SnowyRockLarge.escn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bffj17ltvomwu" path="res://art/models/environment/SnowyRockLarge.escn" id="1"]
+
 
 [sub_resource type="CylinderShape3D" id="1"]
 height = 1.0

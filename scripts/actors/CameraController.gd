@@ -34,7 +34,6 @@ signal changed(bool)
 ## Current yaw and pitch angles for this camera
 var camera_rotation:Vector2
 
-
 func _init():
 	top_clamp = deg_to_rad(top_clamp)
 	bottom_clamp = deg_to_rad(bottom_clamp)
@@ -42,10 +41,8 @@ func _init():
 
 
 func _ready():
-	connect("changed", controller.on_view_changed)
-	connect("looked", controller.on_look)
-	emit_signal("looked", 0)
-	emit_signal("changed", is_first_person())
+	changed.emit(is_first_person())
+	looked.emit(0)
 
 
 func _input(event):
@@ -65,10 +62,9 @@ func _input(event):
 func _process(_delta):
 	global_position = follow_target.global_position
 
-
 ## Indicates whether the camera view is in first-person mode
 func is_first_person():
-	return get_viewport().get_camera_3d().position.is_equal_approx(Vector3.ZERO)
+	return get_viewport().get_camera_3d().position.is_zero_approx()
 
 
 ## Orient the camera based on the given yaw and pitch angles
@@ -76,7 +72,7 @@ func look(angles:Vector2):
 	transform.basis = Basis() # reset rotation
 	rotate_object_local(Vector3.UP, angles.x) # then rotate in X
 	rotate_object_local(Vector3.LEFT, angles.y) # then rotate in X
-	emit_signal("looked", angles.x)
+	looked.emit(angles.x)
 
 
 ## Smoothly transition between first- and third-person views
@@ -89,4 +85,4 @@ func zoom(zoom_in:bool):
 	else:
 		tween.tween_property(camera, "position", third_person_position, 0.2)
 		camera.set_cull_mask_value(2, true)
-	emit_signal("changed", zoom_in)
+	changed.emit(zoom_in)

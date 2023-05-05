@@ -17,18 +17,18 @@ extends Node
 
 
 ## Notifies listeners of a change to the direction of motion
-signal moved(Vector3)
+signal moved(motion, is_running)
 ## Notifies listeners of a change in orientation
-signal turned(float)
+signal turned(angle)
 ## Notifies listeners when switching between walk and run
-signal sprinted(bool)
+signal sprinted(sprint)
 ## Notifies a character upon entering or exiting a crouch
-signal crouched(bool)
+signal crouched(crouch)
 ## Notifies a character when a jump action is initiated
 signal jumped()
 
 ## Notifies listeners of a change to the camera orientation
-@export var controlled_body:NodePath
+@export var controlled_body:CharacterBody3D
 ## Notifies listeners of a change to the camera orientation
 @export var is_sprint_toggle:bool = false
 ## Notifies listeners of a change to the camera orientation
@@ -46,24 +46,20 @@ var is_sprint_on:bool = false
 var is_crouch_on:bool = false
 
 
-# TODO Reduce coupling in the code by setting connecting signals in the editor's Node tab instead
-func _ready():
-	var receiver = get_node(controlled_body)
-	connect("moved", receiver.on_move)
-	connect("turned", receiver.on_turn)
-	connect("sprinted", receiver.on_sprint)
-	connect("crouched", receiver.on_crouch)
-	connect("jumped", receiver.on_jump)
+## TODO Reduce coupling in the code by setting connecting signals in the editor's Node tab instead
+#func _ready():
+#	if not Controllable.provided_by(controlled_body):
+#		queue_free(self)
 
 
 func _input(event):
 	if event.is_action("move") and not event.is_echo():
 		var input_dir = Input.get_vector("move_right", "move_left", "move_backward", "move_forward")
 		move_dir = Vector3(-input_dir.x, 0, -input_dir.y)
-		turn_and_go(not input_dir.is_equal_approx(Vector2.ZERO))
+		turn_and_go(input_dir.is_zero_approx())
 
 	if event.is_action_pressed("jump"):
-		emit_signal("jumped")
+		controlled_body.jump()
 
 	if event.is_action("crouch") and not event.is_echo():
 		on_crouch(event.is_pressed())
@@ -73,12 +69,15 @@ func _input(event):
 
 
 ## Control the orientation and motion of the character physics body
-func turn_and_go(in_motion:bool):
+func turn_and_go(is_stopped:bool):
 	if is_camera_first_person:
-		emit_signal("turned", camera_angle)
-	elif in_motion:
-		emit_signal("turned", camera_angle + atan2(-move_dir.x, -move_dir.z))
-	emit_signal("moved", move_dir.rotated(Vector3.UP, camera_angle) if in_motion else Vector3.ZERO)
+		controlled_body.orient(camera_angle)
+	elif not is_stopped:
+		controlled_body.orient(camera_angle + atan2(-move_dir.x, -move_dir.z))
+	if is_stopped:
+		controlled_body.stop()
+	else:
+		controlled_body.move(move_dir.rotated(Vector3.UP, camera_angle), is_sprint_on)
 
 
 ## Handles the "crouch" input action
@@ -86,12 +85,12 @@ func on_crouch(is_pressed:bool):
 	if is_crouch_toggle:
 		if is_pressed:
 			is_crouch_on = not is_crouch_on
-			emit_signal("crouched", is_crouch_on)
+			controlled_body.crouch(is_crouch_on)
 			if is_crouch_on:
 				is_sprint_on = false
 	else:
 		is_crouch_on = is_pressed
-		emit_signal("crouched", is_crouch_on)
+		controlled_body.crouch(is_crouch_on)
 		if is_crouch_on:
 			is_sprint_on = false
 
@@ -103,22 +102,21 @@ func on_sprint(is_pressed:bool):
 	if is_sprint_toggle:
 		if is_pressed:
 			is_sprint_on = not is_sprint_on
-			emit_signal("sprinted", is_sprint_on)
+			turn_and_go(move_dir.is_zero_approx())
 	else:
 		is_sprint_on = is_pressed
-		emit_signal("sprinted", is_sprint_on)
+		turn_and_go(move_dir.is_zero_approx())
 
 
 ## Ensures that the character faces the direction of motion even if the view changes
 func on_look(angle:float):
 	camera_angle = angle
-	turn_and_go(not move_dir.is_equal_approx(Vector3.ZERO))
+	turn_and_go(move_dir.is_zero_approx())
 
 
 ## Faciliates adjusting the movement mechanics based on the camera viewpoint
 func on_view_changed(is_first_person:bool):
 	is_camera_first_person = is_first_person
-
 
 func save_data():
 	var saved_data = {

@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=17 format=3 uid="uid://ybwuatna58xj"]
 
-[ext_resource type="PackedScene" uid="uid://dwuy7i2jy2l5s" path="res://prefabs/environment/FirTree.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_qk56a"]
-[ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://bu4wtr0xpsnxw" path="res://prefabs/actors/Bot/Bot.tscn" id="5_gkbow"]
 [ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/player/Player.tscn" id="5_s3k1w"]
 [ext_resource type="PackedScene" uid="uid://jh5qvi3kwoxs" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 [ext_resource type="PackedScene" uid="uid://b41mvsiwcpf3i" path="res://prefabs/actors/fox/fox.tscn" id="6_kn8mc"]
 
@@ -114,12 +114,7 @@ shape = SubResource("BoxShape3D_y1n4w")
 
 [node name="Actors" type="Node" parent="."]
 
-[node name="Player" parent="Actors" instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
-[node name="Stamina" parent="Actors/Player/CharacterStats" index="1"]
-fill_rate = 5
-drain_rate = 15
+[node name="Player" parent="Actors" instance=ExtResource("5_s3k1w")]
 
 [node name="Bot" parent="Actors" instance=ExtResource("5_gkbow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5646, 0, -0.963451)
@@ -143,10 +138,5 @@ transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 13.4975, 0.779732
 
 [node name="StatHUD" parent="UI" instance=ExtResource("5")]
 
-[connection signal="changed" from="Actors/Player/CharacterStats/Health" to="UI/StatHUD" method="on_health_changed"]
-[connection signal="changed" from="Actors/Player/CharacterStats/Stamina" to="UI/StatHUD" method="on_stamina_changed"]
-
-[editable path="Actors/Player"]
-[editable path="Actors/Player/CharacterStats"]
 [editable path="Actors/fox"]
 [editable path="Actors/fox/FoxModel"]

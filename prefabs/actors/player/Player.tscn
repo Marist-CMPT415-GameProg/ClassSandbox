@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch5bc7eumrx3w"]
+
+[ext_resource type="PackedScene" uid="uid://bk0o2ec5swda0" path="res://prefabs/stats/CharacterStats.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/actors/MovementController.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/actors/CameraController.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/actors/player/Character.gd" id="4_qsg5l"]
+[ext_resource type="PackedScene" uid="uid://dvxfftx4uasg3" path="res://prefabs/actors/player/Erika.tscn" id="5_plmuc"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 1.7
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nwa57"]
+height = 1.3
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("controlled_body") groups=["persist"]]
+script = ExtResource("2")
+controlled_body = NodePath("Character")
+is_sprint_toggle = true
+is_crouch_toggle = true
+
+[node name="CharacterStats" parent="." instance=ExtResource("1")]
+
+[node name="CameraRoot" type="Node3D" parent="." node_paths=PackedStringArray("controller", "follow_target")]
+script = ExtResource("3")
+controller = NodePath("..")
+follow_target = NodePath("../Character/FollowTarget")
+
+[node name="FollowCamera" type="Camera3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("stamina") groups=["prey"]]
+script = ExtResource("4_qsg5l")
+walk_speed = null
+run_speed = null
+turn_speed = null
+crouch_speed = null
+crouch_height = null
+jump_height = null
+acceleration = null
+fall_delay = null
+stamina = NodePath("../CharacterStats/Stamina")
+
+[node name="StandingCollider" type="CollisionShape3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("1")
+
+[node name="CrouchingCollider" type="CollisionShape3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("CylinderShape3D_nwa57")
+
+[node name="FollowTarget" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Avatar" parent="Character" instance=ExtResource("5_plmuc")]
+
+[node name="PlaceholderAvatar" type="CSGCylinder3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.9, 0)
+visible = false
+radius = 0.6
+height = 1.8
+
+[node name="Nose" type="CSGSphere3D" parent="Character/PlaceholderAvatar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.6)
+visible = false
+radius = 0.2
+
+[connection signal="crouched" from="." to="Character" method="crouch"]
+[connection signal="jumped" from="." to="Character" method="jump"]
+[connection signal="moved" from="." to="Character" method="move"]
+[connection signal="sprinted" from="." to="CharacterStats/Stamina" method="on_drain"]
+[connection signal="sprinted" from="." to="Character" method="on_sprinted"]
+[connection signal="turned" from="." to="Character" method="turn"]
+[connection signal="emptied" from="CharacterStats/Stamina" to="." method="on_sprint" binds= [true]]
+[connection signal="crouched" from="Character" to="Character/Avatar" method="on_body_crouched"]
+[connection signal="fallen" from="Character" to="Character/Avatar" method="on_body_fallen"]
+[connection signal="jumped" from="Character" to="Character/Avatar" method="on_body_jumped"]
+[connection signal="landed" from="Character" to="Character/Avatar" method="on_body_landed"]
+[connection signal="moved" from="Character" to="Character/Avatar" method="on_body_moved"]
+
+[editable path="CharacterStats"]
