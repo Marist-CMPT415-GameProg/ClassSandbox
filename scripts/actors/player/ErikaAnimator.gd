@@ -15,7 +15,7 @@ func _process(delta):
 func on_body_moved(motion:Vector3, is_running:bool):
 	if motion.is_zero_approx():
 		match animator.current_animation:
-			"CrouchedSneakingLeft":
+			"CrouchedWalking":
 				animator.play("IdleCrouchLeft")
 			"Running":
 				# QUEUE the Idle animation to run after the RunToStop animation
@@ -25,8 +25,11 @@ func on_body_moved(motion:Vector3, is_running:bool):
 				animator.play("Idle")
 	else:
 		match animator.current_animation:
+			"JumpingUp", "FallingIdle":
+				return
 			"IdleCrouchLeft":
-				animator.play("CrouchedSneakingLeft")
+				$Node2.rotate_y(-90)
+				animator.play("CrouchedWalking")
 			_:
 				animator.play("Running" if is_running else "Walking")
 
@@ -35,8 +38,8 @@ func on_body_crouched(is_on:bool):
 	if is_on:
 		match animator.current_animation:
 			"Walking", "Running":
-				$Node2.rotate_y(90)
-				animator.play("CrouchedSneakingLeft")
+#				$Node2.rotate_y(90)
+				animator.play("CrouchedWalking")
 			"Idle":
 				$Node2.rotate_y(90)
 				animator.play("IdleCrouchLeft")
@@ -45,8 +48,8 @@ func on_body_crouched(is_on:bool):
 				animator.play("IdleCrouchLeft")
 	else:
 		match animator.current_animation:
-			"CrouchedSneakingLeft":
-				$Node2.rotate_y(-90)
+			"CrouchedWalking":
+#				$Node2.rotate_y(-90)
 				animator.play("Walking")
 			"IdleCrouchLeft":
 				$Node2.rotate_y(-90)
@@ -61,8 +64,14 @@ func on_body_jumped():
 
 
 func on_body_fallen():
-	pass # Replace with function body.
+	animator.play("FallingIdle")
 
 
-func on_body_landed():
-	animator.play("Fallalandtostandingidle01")
+func on_body_landed(motion:Vector3, is_running:bool):
+	var next_anim:String
+	if motion.is_zero_approx():
+		next_anim = "Idle"
+	else:
+		next_anim = "Running" if is_running else "Walking"
+	animator.animation_set_next("FallLandToStandingIdle", next_anim)
+	animator.play("FallLandToStandingIdle")

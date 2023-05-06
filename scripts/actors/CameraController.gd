@@ -14,7 +14,7 @@ extends Node3D
 
 
 ## Notifies listeners of a change to the camera orientation
-signal looked(Vector2, bool)
+signal looked(float)
 ## Notifies listeners of a viewpoint switch (first- vs third-person)
 signal changed(bool)
 

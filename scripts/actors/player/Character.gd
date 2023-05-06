@@ -12,19 +12,19 @@ extends CharacterBody3D
 
 
 ## Notifies listeners of a change to the direction of motion
-signal moved(motion, is_running)
+signal moved(Vector3, bool)
 ## Notifies listeners of a change in orientation
-signal turned(angle)
+signal turned(float)
 ## Notifies a character when a jump action is initiated
 signal jumped()
 ## ...
 signal fallen
 ## ...
-signal landed
+signal landed(Vector3, bool)
 ## Notifies a character upon entering or exiting a crouch
-signal crouched(crouch)
+signal crouched(bool)
 ## Notifies listeners when switching between walk and run
-signal sprinted(sprint)
+signal sprinted(bool)
 
 ## Base speed (in m/sec) for normal movement such as walking
 @export var walk_speed:float    = 2.0
@@ -83,7 +83,7 @@ func accelerate(delta):
 func ground_check(delta):
 	if is_on_floor():
 		if is_falling:
-			landed.emit()
+			landed.emit(target_motion, target_speed == run_speed)
 		is_falling = false
 	else:
 		fall_timeout -= delta 
@@ -111,11 +111,6 @@ func move(force:Vector3, is_running:bool):
 		moved.emit(target_motion, is_running)
 		target_speed = run_speed if is_running else walk_speed
 
-## Assign a direction of motion for the character
-func stop():
-	target_motion = Vector3.ZERO
-	target_speed = 0
-	moved.emit(Vector3.ZERO, false)
 
 ## Assign a direction of motion for the character
 func on_moved(force:Vector3, is_running:bool):
@@ -123,6 +118,11 @@ func on_moved(force:Vector3, is_running:bool):
 	target_speed = run_speed if is_running else walk_speed
 	stamina.on_drain(not target_motion.is_zero_approx() and is_running)
 
+## Assign a direction of motion for the character
+func stop():
+	target_motion = Vector3.ZERO
+	target_speed = 0
+	moved.emit(Vector3.ZERO, false)
 
 ## Assign a movement speed based on the current sprint and crouch states
 func on_sprinted(sprint:bool):
@@ -132,11 +132,6 @@ func on_sprinted(sprint:bool):
 ## Assign an orientation angle to indicate which direction the character faces
 func orient(angle:float):
 	target_angle = angle
-
-## Assign an orientation angle to indicate which direction the character faces
-func on_turned(angle:float):
-	target_angle = angle
-
 
 ## Apply a vertical jump impulse to the character velocity
 func jump():
