@@ -81,6 +81,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
 [node name="SnowyRockLarge" parent="Environment/Forest" instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 
+[node name="Actors" type="Node" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Stamina" parent="Actors/Player/CharacterStats" index="1"]
+fill_rate = 5
+drain_rate = 15
+
+[node name="Lich" parent="Actors" groups=["persist"] instance=ExtResource("5_ly3dh")]
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 8.46129, 0, -18.6955)
+walkSpeed = 1
+runSpeed = 3
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StatHUD" parent="UI" instance=ExtResource("5")]
+
+[node name="MrKrabs" parent="." instance=ExtResource("6_88cwq")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 13.4975, 0.779732, -11.6932)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661855, 0)
 navigation_mesh = SubResource("NavigationMesh_cwjis")
