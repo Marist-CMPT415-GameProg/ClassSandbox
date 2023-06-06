@@ -1,0 +1,19 @@
+# This workflow will check for large files that are not being tracked with Git LFS.
+
+name: LFS Warning
+on: [pull_request]
+
+jobs:
+  label:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: ppremk/lfs-warning@v3.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          filesizelimit: 10MB
+          exclusionPatterns: |
+            **/*.unity

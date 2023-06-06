@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bunujm1i14cww"]
+[gd_scene load_steps=17 format=3 uid="uid://ybwuatna58xj"]
 
-[ext_resource type="PackedScene" uid="uid://dwuy7i2jy2l5s" path="res://prefabs/environment/FirTree.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://d2vmee0ftv4wo" path="res://prefabs/environment/BareTree.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://dc5cnsh74qnvt" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/FirTree.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_qk56a"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/BareTree.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/SnowyRockLarge.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cy13ypuhjf4uc" path="res://prefabs/ui/StatHUD.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bu4wtr0xpsnxw" path="res://prefabs/actors/Bot/Bot.tscn" id="5_gkbow"]
 [ext_resource type="PackedScene" uid="uid://bg6fabug5tu7b" path="res://prefabs/actors/lich.tscn" id="5_ly3dh"]
+[ext_resource type="PackedScene" uid="uid://ch5bc7eumrx3w" path="res://prefabs/actors/player/Player.tscn" id="5_s3k1w"]
 [ext_resource type="PackedScene" uid="uid://jh5qvi3kwoxs" path="res://prefabs/actors/Crab/MrKrabs.tscn" id="6_88cwq"]
 [ext_resource type="PackedScene" uid="uid://b41mvsiwcpf3i" path="res://prefabs/actors/fox/fox.tscn" id="6_kn8mc"]
 
@@ -28,6 +30,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 size = Vector3(1, 20.9018, 100.535)
 
 [node name="Outdoors" type="Node3D"]
+script = ExtResource("1_qk56a")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -112,9 +115,6 @@ mesh = SubResource("PlaneMesh_js10m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fuve4")
 
-[node name="fox" parent="." instance=ExtResource("6_kn8mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87604, 0, -5.08806)
-
 [node name="bounds" type="RigidBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bounds"]
@@ -133,10 +133,32 @@ shape = SubResource("BoxShape3D_y1n4w")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10, -50)
 shape = SubResource("BoxShape3D_y1n4w")
 
-[connection signal="changed" from="Actors/Player/CharacterStats/Health" to="UI/StatHUD" method="on_health_changed"]
-[connection signal="changed" from="Actors/Player/CharacterStats/Stamina" to="UI/StatHUD" method="on_stamina_changed"]
+[node name="Actors" type="Node" parent="."]
 
-[editable path="Actors/Player"]
-[editable path="Actors/Player/CharacterStats"]
-[editable path="fox"]
-[editable path="fox/FoxModel"]
+[node name="Player" parent="Actors" instance=ExtResource("5_s3k1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Bot" parent="Actors" instance=ExtResource("5_gkbow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5646, 0, -0.963451)
+moveSpeed = 5.0
+health = 5.0
+healthRate = 5.0
+detectDistance = 5.0
+
+[node name="Lich" parent="Actors" instance=ExtResource("5_ly3dh")]
+transform = Transform3D(-0.015, 0, -1.31134e-09, 0, 0.015, 0, 1.31134e-09, 0, -0.015, 8.46129, 0, -18.6955)
+walkSpeed = 1
+runSpeed = 3
+
+[node name="fox" parent="Actors" instance=ExtResource("6_kn8mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87604, 0, -5.08806)
+
+[node name="MrKrabs" parent="Actors" instance=ExtResource("6_88cwq")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 13.4975, 0.779732, -11.6932)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StatHUD" parent="UI" instance=ExtResource("5")]
+
+[editable path="Actors/fox"]
+[editable path="Actors/fox/FoxModel"]
